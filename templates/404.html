@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    404 | PageNotFound
+{% endblock %}
+
+{% block extra_header %}
+    <style>
+        .section{
+            text-align: center;
+        }
+        .p-1{
+            font-size: 30px;
+        }
+        .p-2{
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="section">
+    <p class="p-1"> Page Not Found | 404</p>
+    <hr>
+    <p><a href="{% url 'home:home' %}" class="p-2 btn btn-outline-primary">Go Home</a></p>
+    </div>
+{% endblock %}

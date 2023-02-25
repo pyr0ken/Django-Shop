@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_header %}
+    <link rel="stylesheet" href="{% static 'accounts/css/login_style.css' %}">
+{% endblock %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <div class="base">
+        <div class="inFormBackground">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="inLoginForm">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="title">
+                        <h3>Login Here :)</h3>
+                    </div>
+                    <div class="inputGroup">
+                        <label for="email">Email :</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="inputGroup">
+                        <label for="password">Password :</label>
+                        {{ form.password }}
+                    </div>
+                    <button class="submitForm" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

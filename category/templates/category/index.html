@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Category | Page
+{% endblock %}
+
+{% block extra_header %}
+    <link rel="stylesheet" href="{% static 'category/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <h2 class="font-weight-normal text-center"
+            style="color: #000; padding: 10px;border-radius: .3rem;width: 21.67%"><strong>categories</strong></h2>
+        <a href="{% url 'category:products' %}" class="btn btn-outline-dark">All</a>
+        {% for category in categories %}
+            <div class="btn-group">
+                <a class="btn btn-danger" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    {% for sub in category.scategory.all %}
+                        <li>
+                            <a href="{{ sub.get_absolute_url }}" class="dropdown-item">{{ sub.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        {% endfor %}
+    </div>
+    <br><br>
+
+
+    {% for product in products %}
+        <div class="card category d-inline-block">
+            <img src="{{ product.image.url }}" class="card-img-top p-3" alt="">
+            <di class="card-body">
+                <h5 class="card-title"> {{ product.name }} </h5>
+                <hr>
+                <p class="card-text"> {{ product.created }} </p>
+                <a href="{{ product.get_absolute_url }}" class="btn btn-primary"> Detail </a>
+            </di>
+        </div>
+    {% endfor %}
+
+{% endblock %}

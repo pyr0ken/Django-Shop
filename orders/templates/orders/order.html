@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Order | Page
+{% endblock %}
+
+{% block content %}
+    <h2> Checkout </h2>
+    <p> Total Price : <strong>{{ order.get_total_price }}</strong> Toman </p>
+    <a href="{% url 'orders:order_pay' order.id %}" class="btn btn-outline-primary col-md-1"> Pay </a>
+    <hr class="col-md-3 ml-1">
+    <form action="{% url 'orders:order_detail' order.id %}" method="post" novalidate>
+        {% csrf_token %}
+        {{ form_address.as_p }}
+        <input type="submit" value="Add Address" class="btn btn-primary col-md-1">
+    </form><br><br>
+    <form action="{% url 'orders:apply_coupon' order.id %}" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Apply" class="btn btn-outline-info col-md-1">
+    </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Home | Page
+{% endblock %}
+
+{% block extra_header %}
+    <style>
+    .img-home{
+        width: 100%;
+        max-height: 79vh;
+        height: auto;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h2 class="text-center font-weight-bold"> Hello {{ request.user.first_name }}, Welcome To Our Stor :) </h2>
+    <img src="{% static 'home/img/store.jpg'%}" class="img-fluid img-thumbnail img-home" alt="pic-store">
+{% endblock %}

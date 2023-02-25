@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_header %}
+    <link rel="stylesheet" href="{% static 'accounts/css/register_style.css' %}">
+{% endblock %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <div class="base">
+        <div class="inFormBackground">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="inLoginForm">
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="title">
+                        <h3>Register Here :)</h3>
+                    </div>
+                    <div class="inputGroup">
+                        <label for="email">First Name :</label>
+                        {{ form.first_name }}
+                        {% for err in form.first_name.errors %}
+                            <small class="text-danger"> {{ err }} </small>
+                        {% endfor %}
+                    </div>
+                    <div class="inputGroup">
+                        <label for="password">Last Name :</label>
+                        {{ form.last_name }}
+                        {% for err in form.last_name.errors %}
+                            <small class="text-danger"> {{ err }} </small>
+                        {% endfor %}
+                    </div>
+                    <div class="inputGroup">
+                        <label for="email">Email:</label>
+                        {{ form.email }}
+                        {% for err in form.email.errors %}
+                            <small class="text-danger"> {{ err }} </small>
+                        {% endfor %}
+                    </div>
+                    <div class="inputGroup">
+                        <label for="email">Phone Number :</label>
+                        {{ form.phone_number }}
+                        {% for err in form.phone_number.errors %}
+                            <small class="text-danger"> {{ err }} </small>
+                        {% endfor %}
+                    </div>
+                    <div class="inputGroup">
+                        <label for="email">Password :</label>
+                        {{ form.password }}
+                        {% for err in form.password.errors %}
+                            <small class="text-danger"> {{ err }} </small>
+                        {% endfor %}
+                    </div>
+                    <button class="submitForm" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

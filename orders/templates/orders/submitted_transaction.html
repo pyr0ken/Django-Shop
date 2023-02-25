@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Submitted Payment
+{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h2> Transaction submitted ❌ </h2>
+        <br>
+        <hr>
+        <h3> Transaction submitted : {{ status_code }} </h3><br>
+        <a href="{% url 'home:home' %}" class="btn btn-outline-primary">Go Home</a><br><br>
+        <small class="text-danger"> warning : This is a test payment </small>
+    </div>
+{% endblock %}
